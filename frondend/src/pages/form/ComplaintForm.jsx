@@ -40,11 +40,14 @@ const ComplaintForm = () => {
       if (complaintData.file) {
         formdata.append("file", complaintData.file);
       }
-      const response = await fetch("http://localhost:5000/complaints", {
-        method: "POST",
-        credentials: "include",
-        body: formdata,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/complaints`,
+        {
+          method: "POST",
+          credentials: "include",
+          body: formdata,
+        },
+      );
 
       const result = await response.json();
 

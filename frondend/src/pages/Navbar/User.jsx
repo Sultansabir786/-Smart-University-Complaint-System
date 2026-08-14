@@ -14,10 +14,13 @@ const User = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await fetch("http://localhost:5000/auth/me", {
-          method: "GET",
-          credentials: "include",
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/auth/me`,
+          {
+            method: "GET",
+            credentials: "include",
+          },
+        );
 
         const data = await response.json();
 
@@ -46,7 +49,7 @@ const User = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://localhost:5000/logout", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
         method: "POST",
         credentials: "include",
       });
