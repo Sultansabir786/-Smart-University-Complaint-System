@@ -1,13 +1,17 @@
 import { MongoClient } from "mongodb";
-const client = new MongoClient("mongodb://localhost:27017");
+import dotenv from "dotenv";
 
-export const db = client.db("SignUP_bobby");
+dotenv.config();
+
+const client = new MongoClient(process.env.MONGO_URI);
+
+export const db = client.db("SignUPBobby");
 
 export const Connect_DB = async () => {
   try {
     await client.connect();
-    console.log("Mongo is connected");
+    console.log("MongoDB Atlas is connected");
   } catch (error) {
-    console.log("Mongo db is not connected", error.message);
+    console.log("MongoDB is not connected:", error.message);
   }
 };
